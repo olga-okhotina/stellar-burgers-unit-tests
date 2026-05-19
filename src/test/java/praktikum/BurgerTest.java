@@ -49,6 +49,16 @@ public class BurgerTest {
     }
 
     @Test
+    public void moveIngredientChangesIngredientPosition() {
+        Ingredient ingredient2 = Mockito.mock(Ingredient.class);
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredient2);
+        burger.moveIngredient(0, 1);
+        assertEquals(ingredient2, burger.ingredients.get(0));
+        assertEquals(ingredient, burger.ingredients.get(1));
+    }
+
+    @Test
     public void getReceiptContainsBunNameAndIngredientInfo() {
         when(bun.getName()).thenReturn("Black Bun");
         when(bun.getPrice()).thenReturn(100.0f);
